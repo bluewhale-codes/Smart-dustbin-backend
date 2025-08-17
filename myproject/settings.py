@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -40,7 +44,17 @@ INSTALLED_APPS = [
     'rest_framework',  # DRF
     'myapp',
     'corsheaders',
+    'cloudinary',
+    'cloudinary_storage',
 ]
+
+cloudinary.config(
+  cloud_name = "dycjjaxsk",
+  api_key = "325247431186386",
+  api_secret = "WEMuN15iF5KQYEeUXyJX0ES-KUA",
+  secure = True
+)
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 MIDDLEWARE = [
      'corsheaders.middleware.CorsMiddleware',
